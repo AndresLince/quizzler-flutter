@@ -83,6 +83,11 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                setState(() {
+                  scoreKeeper.add(
+                    const Icon(Icons.check, color: Colors.green)
+                  );
+                });
               },
             ),
           ),
