@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +35,22 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
   int currentQuestion = 0;
-  void handleAnswer() {
+  void handleAnswer(buttonValue) {
+    if (buttonValue == correctAnswers[currentQuestion]) {
+      scoreKeeper.add(
+        const Icon(
+          Icons.check,
+          color: Colors.green,
+        )
+      );
+    } else {
+      scoreKeeper.add(
+          const Icon(
+            Icons.close,
+            color: Colors.red,
+          )
+      );
+    }
     setState(() {
       if (currentQuestion < questions.length -1) {
         currentQuestion++;
@@ -46,6 +63,11 @@ class _QuizPageState extends State<QuizPage> {
     'You can lead a cow down stairs but not up stairs.',
     'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.',
+  ];
+  List<bool> correctAnswers = [
+    false,
+    true,
+    true,
   ];
   @override
   Widget build(BuildContext context) {
@@ -84,7 +106,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                handleAnswer();
+                handleAnswer(true);
               },
             ),
           ),
@@ -104,7 +126,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                handleAnswer();
+                handleAnswer(false);
               },
             ),
           ),
