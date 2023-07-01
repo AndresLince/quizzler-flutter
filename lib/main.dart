@@ -55,6 +55,7 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 quizBrain.reset();
                 Navigator.pop(context);
+                scoreKeeper = [];
               });
             },
             width: 120,
