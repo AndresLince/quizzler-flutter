@@ -2,7 +2,7 @@ import 'quiz_brain.dart';
 
 import 'package:flutter/material.dart';
 
-QuizBrain quizBrain = new QuizBrain();
+QuizBrain quizBrain = QuizBrain();
 
 void main() {
   runApp(const Quizzler());
@@ -38,7 +38,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
   int currentQuestion = 0;
   void handleAnswer(buttonValue) {
-    if (buttonValue == quizBrain.questions[currentQuestion].questionAnswer) {
+    if (buttonValue == quizBrain.getQuestionValue(currentQuestion)) {
       scoreKeeper.add(
         const Icon(
           Icons.check,
@@ -54,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
       );
     }
     setState(() {
-      if (currentQuestion < quizBrain.questions.length -1) {
+      if (currentQuestion < quizBrain.getNumberOfQuestions() -1) {
         currentQuestion++;
       } else {
         currentQuestion = 0;
@@ -73,7 +73,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questions[currentQuestion].questionText,
+                quizBrain.getQuestionText(currentQuestion),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
