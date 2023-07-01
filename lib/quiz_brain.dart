@@ -48,8 +48,12 @@ class QuizBrain {
   }
 
   void nextQuestion() {
-    if (currentQuestion < getNumberOfQuestions() -1) {
+    if (!isFinished()) {
       currentQuestion++;
     }
+  }
+
+  bool isFinished() {
+    return currentQuestion == getNumberOfQuestions() -1;
   }
 }
