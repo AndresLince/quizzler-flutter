@@ -36,6 +36,10 @@ class QuizBrain {
     return _questions[questionNumber].questionText;
   }
 
+  bool getQuestionValue(int questionNumber) {
+    return _questions[questionNumber].questionAnswer;
+  }
+
   int getNumberOfQuestions() {
     return _questions.length;
   }
