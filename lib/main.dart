@@ -51,7 +51,12 @@ class _QuizPageState extends State<QuizPage> {
               "Restart",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              setState(() {
+                quizBrain.reset();
+                Navigator.pop(context);
+              });
+            },
             width: 120,
           )
         ],
