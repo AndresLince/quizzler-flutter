@@ -56,4 +56,8 @@ class QuizBrain {
   bool isFinished() {
     return currentQuestion == getNumberOfQuestions() -1;
   }
+
+  void reset() {
+    currentQuestion = 0;
+  }
 }
