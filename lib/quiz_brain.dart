@@ -35,4 +35,8 @@ class QuizBrain {
   String getQuestionText(int questionNumber) {
     return _questions[questionNumber].questionText;
   }
+
+  int getNumberOfQuestions() {
+    return _questions.length;
+  }
 }
