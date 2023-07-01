@@ -40,7 +40,22 @@ class _QuizPageState extends State<QuizPage> {
   int currentQuestion = 0;
   void handleAnswer(buttonValue) {
     if (quizBrain.isFinished()) {
-      print('Should restart the game');
+      Alert(
+        context: context,
+        type: AlertType.error,
+        title: "Flutter alert",
+        desc: "The game is finish you want to restart?.",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Restart",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            width: 120,
+          )
+        ],
+      ).show();
     } else {
       print('Continue the game');
       if (buttonValue == quizBrain.getQuestionValue()) {
