@@ -38,7 +38,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
   int currentQuestion = 0;
   void handleAnswer(buttonValue) {
-    if (buttonValue == quizBrain.getQuestionValue(currentQuestion)) {
+    if (buttonValue == quizBrain.getQuestionValue()) {
       scoreKeeper.add(
         const Icon(
           Icons.check,
@@ -54,11 +54,7 @@ class _QuizPageState extends State<QuizPage> {
       );
     }
     setState(() {
-      if (currentQuestion < quizBrain.getNumberOfQuestions() -1) {
-        currentQuestion++;
-      } else {
-        currentQuestion = 0;
-      }
+      quizBrain.nextQuestion();
     });
   }
   @override
@@ -73,7 +69,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(currentQuestion),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
