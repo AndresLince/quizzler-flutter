@@ -1,4 +1,5 @@
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import 'package:flutter/material.dart';
 
@@ -38,21 +39,27 @@ class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
   int currentQuestion = 0;
   void handleAnswer(buttonValue) {
-    if (buttonValue == quizBrain.getQuestionValue()) {
-      scoreKeeper.add(
-        const Icon(
-          Icons.check,
-          color: Colors.green,
-        )
-      );
+    if (quizBrain.isFinished()) {
+      print('Should restart the game');
     } else {
-      scoreKeeper.add(
-          const Icon(
-            Icons.close,
-            color: Colors.red,
-          )
-      );
+      print('Continue the game');
+      if (buttonValue == quizBrain.getQuestionValue()) {
+        scoreKeeper.add(
+            const Icon(
+              Icons.check,
+              color: Colors.green,
+            )
+        );
+      } else {
+        scoreKeeper.add(
+            const Icon(
+              Icons.close,
+              color: Colors.red,
+            )
+        );
+      }
     }
+
     setState(() {
       quizBrain.nextQuestion();
     });
