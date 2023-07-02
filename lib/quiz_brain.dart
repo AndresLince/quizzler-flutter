@@ -66,8 +66,8 @@ class QuizBrain {
     return _scoreKeeper;
   }
 
-  addScore(bool correctAnswer) {
-    if (correctAnswer) {
+  addScore(bool buttonValue) {
+    if (buttonValue == getQuestionValue()) {
       return _scoreKeeper.add(
           const Icon(
             Icons.check,
