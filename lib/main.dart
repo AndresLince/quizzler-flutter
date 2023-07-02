@@ -61,7 +61,7 @@ class _QuizPageState extends State<QuizPage> {
         ],
       ).show();
     } else {
-      quizBrain.addScore(buttonValue == quizBrain.getQuestionValue());
+      quizBrain.addScore(buttonValue);
     }
 
     setState(() {
