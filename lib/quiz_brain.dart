@@ -62,6 +62,7 @@ class QuizBrain {
 
   void reset() {
     currentQuestion = 0;
+    _scoreKeeper = [];
   }
 
   List<Widget> getScore() {
