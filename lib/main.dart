@@ -54,7 +54,6 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 quizBrain.reset();
                 Navigator.pop(context);
-                quizBrain.scoreKeeper = [];
               });
             },
             width: 120,
@@ -62,22 +61,7 @@ class _QuizPageState extends State<QuizPage> {
         ],
       ).show();
     } else {
-      print('Continue the game');
-      if (buttonValue == quizBrain.getQuestionValue()) {
-        quizBrain.scoreKeeper.add(
-            const Icon(
-              Icons.check,
-              color: Colors.green,
-            )
-        );
-      } else {
-        quizBrain.scoreKeeper.add(
-            const Icon(
-              Icons.close,
-              color: Colors.red,
-            )
-        );
-      }
+      quizBrain.addScore(buttonValue == quizBrain.getQuestionValue());
     }
 
     setState(() {
@@ -148,7 +132,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         //TODO: Add a Row here as your score keeper
         Row(
-          children: quizBrain.scoreKeeper,
+          children: quizBrain.getScore(),
         )
       ],
     );
