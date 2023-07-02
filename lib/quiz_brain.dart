@@ -67,4 +67,21 @@ class QuizBrain {
   List<Widget> getScore() {
     return _scoreKeeper;
   }
+
+  addScore(bool correctAnswer) {
+    if (correctAnswer) {
+      return _scoreKeeper.add(
+          const Icon(
+            Icons.check,
+            color: Colors.green,
+          )
+      );
+    }
+    _scoreKeeper.add(
+        const Icon(
+          Icons.close,
+          color: Colors.red,
+        )
+    );
+  }
 }
