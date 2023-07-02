@@ -2,7 +2,6 @@ import 'question.dart';
 import 'package:flutter/material.dart';
 
 class QuizBrain {
-
   int currentQuestion = 0;
 
   List<Widget> _scoreKeeper = [];
@@ -54,7 +53,7 @@ class QuizBrain {
   }
 
   bool isFinished() {
-    return currentQuestion == getNumberOfQuestions() -1;
+    return currentQuestion == getNumberOfQuestions() - 1;
   }
 
   void reset() {
@@ -68,18 +67,14 @@ class QuizBrain {
 
   addScore(bool buttonValue) {
     if (buttonValue == getQuestionValue()) {
-      return _scoreKeeper.add(
-          const Icon(
-            Icons.check,
-            color: Colors.green,
-          )
-      );
+      return _scoreKeeper.add(const Icon(
+        Icons.check,
+        color: Colors.green,
+      ));
     }
-    _scoreKeeper.add(
-        const Icon(
-          Icons.close,
-          color: Colors.red,
-        )
-    );
+    _scoreKeeper.add(const Icon(
+      Icons.close,
+      color: Colors.red,
+    ));
   }
 }
