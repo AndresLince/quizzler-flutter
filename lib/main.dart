@@ -36,7 +36,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Widget> scoreKeeper = [];
   int currentQuestion = 0;
   void handleAnswer(buttonValue) {
     if (quizBrain.isFinished()) {
@@ -55,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 quizBrain.reset();
                 Navigator.pop(context);
-                scoreKeeper = [];
+                quizBrain.scoreKeeper = [];
               });
             },
             width: 120,
@@ -65,14 +64,14 @@ class _QuizPageState extends State<QuizPage> {
     } else {
       print('Continue the game');
       if (buttonValue == quizBrain.getQuestionValue()) {
-        scoreKeeper.add(
+        quizBrain.scoreKeeper.add(
             const Icon(
               Icons.check,
               color: Colors.green,
             )
         );
       } else {
-        scoreKeeper.add(
+        quizBrain.scoreKeeper.add(
             const Icon(
               Icons.close,
               color: Colors.red,
@@ -149,7 +148,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         //TODO: Add a Row here as your score keeper
         Row(
-          children: scoreKeeper,
+          children: quizBrain.scoreKeeper,
         )
       ],
     );

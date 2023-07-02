@@ -1,8 +1,11 @@
 import 'question.dart';
+import 'package:flutter/material.dart';
 
 class QuizBrain {
 
   int currentQuestion = 0;
+
+  List<Widget> scoreKeeper = [];
 
   List<Question> _questions = [
     Question('You can lead a cow down stairs but not up stairs.', false),
